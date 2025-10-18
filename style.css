@@ -173,14 +173,13 @@ header {
 
 /* FOOTER VERDE */
 footer {
-  background: linear-gradient(135deg, #006400, #32cd32, #adff2f);
+  background-color: #006400; /* Verde oscuro */
   color: white;
   text-align: center;
   padding: 20px;
   margin-top: 20px;
   font-weight: bold;
   letter-spacing: 0.5px;
-  transition: background 0.3s ease;
 }
 
 footer:hover {
@@ -206,3 +205,4 @@ footer:hover {
     width: 90%;
   }
 }
+
