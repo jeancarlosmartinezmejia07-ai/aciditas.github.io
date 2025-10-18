@@ -5,15 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = slides.length;
   let sliderInterval = null;
 
-  // --- Función que cambia de slide ---
+  // --- Funciones base ---
   function showSlide() {
     index++;
     if (index >= total) index = 0;
     slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-    checkForVideo();
+    handleVideo();
   }
 
-  // --- Iniciar y detener el slider ---
   function startSlider() {
     if (!sliderInterval) {
       sliderInterval = setInterval(showSlide, 4000);
@@ -28,44 +27,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Revisar si el slide visible tiene un video ---
-  function checkForVideo() {
+  function handleVideo() {
     const currentSlide = slides[index];
     const video = currentSlide.querySelector("video");
 
     if (video) {
-      // Detener el slider
+      // Detener slider mientras el video está en pantalla
       stopSlider();
 
-      // Reiniciar el video y reproducirlo
+      // Intentar reproducir automáticamente
+      video.muted = true;
+      video.playsInline = true;
       video.currentTime = 0;
-      video.play();
+      video.play().catch(() => {
+        console.log("Autoplay bloqueado, se reproducirá al hacer clic.");
+      });
 
-      // Cuando termina el video, reanudar el slider
-      video.onended = () => {
-        startSlider();
-      };
+      // Cuando empiece realmente, pausar slider
+      video.addEventListener("playing", () => stopSlider());
 
-      // Si el usuario pausa manualmente, reanudar slider
-      video.onpause = () => {
+      // Si se pausa o termina, reanudar slider
+      video.addEventListener("pause", () => {
         if (!video.ended) startSlider();
-      };
+      });
+      video.addEventListener("ended", () => startSlider());
     }
   }
 
-  // --- Detectar si un video empieza a reproducirse manualmente ---
-  const allVideos = document.querySelectorAll("video");
-  allVideos.forEach(video => {
-    video.addEventListener("play", () => {
-      stopSlider();
-    });
+  // --- Si un video empieza manualmente ---
+  document.querySelectorAll("video").forEach(video => {
+    video.addEventListener("play", stopSlider);
     video.addEventListener("pause", () => {
       if (!video.ended) startSlider();
     });
-    video.addEventListener("ended", () => {
-      startSlider();
-    });
+    video.addEventListener("ended", startSlider);
   });
 
-  // --- Iniciar slider ---
+  // --- Iniciar el slider ---
   startSlider();
 });
