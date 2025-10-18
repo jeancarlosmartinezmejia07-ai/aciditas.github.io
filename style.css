@@ -174,5 +174,37 @@ footer {
   .slide img {
     width: 100%;
   }
+/* --- Sección del video --- */
+.video-section {
+  background: #f0f0f0;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.video-section h2 {
+  color: #006400;
+  margin-bottom: 15px;
+}
+
+.video-section p {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+/* Contenedor centrado del video */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container video {
+  border-radius: 12px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
 
 }
+
