@@ -171,13 +171,20 @@ header {
   border-radius: 5px;
 }
 
-/* FOOTER */
+/* FOOTER VERDE */
 footer {
-  background: #222;
+  background: linear-gradient(135deg, #006400, #32cd32, #adff2f);
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
   margin-top: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+footer:hover {
+  background: linear-gradient(135deg, #008000, #39e639, #ccff33);
 }
 
 /* RESPONSIVE */
