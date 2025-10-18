@@ -81,7 +81,6 @@ header {
   background: #218838;
 }
 
-
 /* SLIDER */
 .slider {
   padding: 40px 20px;
@@ -109,21 +108,40 @@ header {
   text-align: center;
 }
 
-
-
-
-/* Ajuste específico para botón "Ver producto" dentro del slide */
+/* Botón dentro del slide */
 .slide .btn {
   display: block;
-  width: 150px;         /* ancho fijo (ajusta a tu gusto) */
-  max-width: 90%;       /* evita desbordes en móviles */
-  margin: 20px auto 0;  /* centra horizontalmente */
+  width: 150px;
+  max-width: 90%;
+  margin: 20px auto 0;
   padding: 8px 14px;
   text-align: center;
 }
 
+/* --- Sección del video --- */
+.video-section {
+  background: #f0f0f0;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
+.video-container video {
+  width: 350px;
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
 
 /* OFERTAS */
 .ofertas {
@@ -146,7 +164,7 @@ header {
   gap: 15px;
 }
 
-.contacto input, 
+.contacto input,
 .contacto textarea {
   padding: 10px;
   border: 1px solid #ccc;
@@ -168,43 +186,16 @@ footer {
     flex-direction: column;
     gap: 10px;
   }
+
   .banner h1 {
     font-size: 2rem;
   }
+
   .slide img {
     width: 100%;
   }
-/* --- Sección del video --- */
-.video-section {
-  background: #f0f0f0;
-  text-align: center;
-  padding: 50px 20px;
-}
 
-.video-section h2 {
-  color: #006400;
-  margin-bottom: 15px;
+  .video-container video {
+    width: 90%;
+  }
 }
-
-.video-section p {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-}
-
-/* Contenedor centrado del video */
-.video-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-container video {
-  border-radius: 12px;
-  width: 350px;
-  max-width: 90%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-}
-
-}
-
