@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   const slidesContainer = document.getElementById("slides");
   const total = slides.length;
-  let sliderInterval;
+  let sliderInterval = null;
 
-  // --- Funciones del slider ---
+  // --- Función que cambia de slide ---
   function showSlide() {
     index++;
     if (index >= total) index = 0;
@@ -13,48 +13,59 @@ document.addEventListener("DOMContentLoaded", () => {
     checkForVideo();
   }
 
+  // --- Iniciar y detener el slider ---
   function startSlider() {
-    sliderInterval = setInterval(showSlide, 4000);
+    if (!sliderInterval) {
+      sliderInterval = setInterval(showSlide, 4000);
+    }
   }
 
   function stopSlider() {
-    clearInterval(sliderInterval);
+    if (sliderInterval) {
+      clearInterval(sliderInterval);
+      sliderInterval = null;
+    }
   }
 
-  // --- Revisión del video dentro del slide visible ---
+  // --- Revisar si el slide visible tiene un video ---
   function checkForVideo() {
     const currentSlide = slides[index];
     const video = currentSlide.querySelector("video");
 
     if (video) {
-      // Detener slider y reproducir video
+      // Detener el slider
       stopSlider();
+
+      // Reiniciar el video y reproducirlo
       video.currentTime = 0;
       video.play();
 
-      // Cuando termine el video, reanudar el slider
+      // Cuando termina el video, reanudar el slider
       video.onended = () => {
         startSlider();
       };
 
-      // Si el usuario pausa el video, también reanudar el slider
+      // Si el usuario pausa manualmente, reanudar slider
       video.onpause = () => {
         if (!video.ended) startSlider();
       };
     }
   }
 
-  // --- Iniciar slider ---
-  startSlider();
-
-  // --- Si el usuario manualmente da play al video ---
-  const videos = document.querySelectorAll("video");
-  videos.forEach(video => {
-    video.addEventListener("play", stopSlider);
+  // --- Detectar si un video empieza a reproducirse manualmente ---
+  const allVideos = document.querySelectorAll("video");
+  allVideos.forEach(video => {
+    video.addEventListener("play", () => {
+      stopSlider();
+    });
     video.addEventListener("pause", () => {
       if (!video.ended) startSlider();
     });
-    video.addEventListener("ended", startSlider);
+    video.addEventListener("ended", () => {
+      startSlider();
+    });
   });
-});
 
+  // --- Iniciar slider ---
+  startSlider();
+});
