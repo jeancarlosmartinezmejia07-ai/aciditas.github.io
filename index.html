@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aciditas - Papas con Sal y Pimienta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Encabezado con Banner -->
+  <header>
+    <nav class="navbar">
+      <img src="aciditas.png" alt="Aciditas Logo" class="logo">
+      <ul class="menu">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#ofertas">Ofertas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Banner principal -->
+    <section class="banner">
+      <div class="banner-texto">
+        <h1>¡Disfruta el sabor de <span>Aciditas</span>!</h1>
+        <p>Papas con sal y pimienta en su empaque verde original.</p>
+        <a href="#productos" class="btn">Compra Ahora</a>
+      </div>
+    </section>
+  </header>
+
+  <!-- Slider de productos -->
+  <section id="productos" class="slider">
+    <h2>Productos Destacados</h2>
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="Producto1.jpg" alt="Producto 1">
+        <a href="#" class="btn">Ver Producto</a>
+      </div>
+
+      <div class="slide">
+        <img src="Producto2.jpg" alt="Producto 2">
+        <a href="#" class="btn">Ver Producto</a>
+      </div>
+
+      <div class="slide">
+        <img src="Producto3.jpg" alt="Producto 3">
+        <a href="#" class="btn">Ver Producto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎥 Solo el video centrado -->
+  <section id="video" class="video-section">
+    <div class="video-container">
+      <video controls>
+        <source src="VID-20251017-WA0025.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+  </section>
+
+  <!-- Ofertas -->
+  <section id="ofertas" class="ofertas">
+    <h2>Promociones Especiales</h2>
+    <p>No te pierdas nuestras ofertas limitadas</p>
+    <a href="#" class="btn">Ver Oferta</a>
+  </section>
+
+  <!-- Formulario de contacto -->
+  <section id="contacto" class="contacto">
+    <h2>Contáctanos</h2>
+    <form>
+      <input type="text" placeholder="Tu Nombre" required>
+      <input type="email" placeholder="Tu Correo" required>
+      <textarea placeholder="Tu Mensaje" required></textarea>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Aciditas. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script del slider -->
+  <script src="slider.js"></script>
+</body>
+</html>
 
